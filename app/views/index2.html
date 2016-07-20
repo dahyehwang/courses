@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Courses</title>
+		<link rel="stylesheet" href="/static/css/styles2.css" type="text/css">
+	</head>
+	<body>
+		<div id="wrapper">
+			<h2>Are you sure you want to delete the following course?</h2>
+			<h4>Name: {{ course[0]['courses_name'] }}</h4>
+			<h4>Description: {{ course[0]['description']}}</h4>
+			<form action="/" method="GET">
+				<input type="submit" name="no" value="No" id="no" />
+			</form>
+			<form action="/delete_forever/{{ course[0]['id'] }}" method="GET">
+				<input type="submit" name="yes" value="Yes! I want to delete this" id="yes">
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Courses</title>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+  	<div id="wrapper">
+	    <header>
+	    	<h3>Add a new course</h3>
+	    	<form action="add_course" method="POST">
+	    	<label>Name: </label><input type="text" name="name" placeholder="name" id="name" /><br>
+	    	<label id="text_desc">Description: </label><textarea name="description" placeholder="description" id="description"></textarea><br>
+	    	<input type="submit" name="add" value="Add" id="add" />
+	    	</form>
+	    </header>
+    	{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p id="flash">{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	    <div id="body">
+	    	<h3>Courses</h3>
+	    	<table>
+	    		<tr>
+	    			<th>Course Name</th>
+	    			<th>Description</th>
+	    			<th>Date Added</th>
+	    			<th>Actions</th>
+	    		</tr>
+	    		{% for i in course %}
+		    		<tr>
+		    			<td>{{ i['courses_name'] }}</td>
+		    			<td>{{ i['description'] }}</td>
+		    			<td>{{ i['updated_at'] }}</td>
+		    			<td><a href="/courses/destroy/{{i['id']}}">remove</a></td>
+		    		</tr>
+	    		{% endfor %}
+	    	</table>
+	    </div>
+    </div>
+  </body>
+</html>
